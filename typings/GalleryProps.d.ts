@@ -1,11 +1,11 @@
 /**
- * This file was generated from Graph.xml
+ * This file was generated from Gallery.xml
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix UI Content Team
  */
 import { CSSProperties } from "react";
 
-export interface GraphContainerProps {
+export interface GalleryContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
@@ -13,7 +13,7 @@ export interface GraphContainerProps {
     sampleText: string;
 }
 
-export interface GraphPreviewProps {
+export interface GalleryPreviewProps {
     className: string;
     style: string;
     styleObject?: CSSProperties;
