@@ -16,6 +16,7 @@ interface InfiniteBodyProps {
     role?: string;
     setPage?: (computePage: (prevPage: number) => number) => void;
     style?: CSSProperties;
+    setOffset: (v: number) => void;
 }
 
 export function InfiniteBody(props: PropsWithChildren<InfiniteBodyProps>): ReactElement {
@@ -28,6 +29,8 @@ export function InfiniteBody(props: PropsWithChildren<InfiniteBodyProps>): React
              * In Windows OS the result of first expression returns a non integer and result in never loading more, require floor to solve.
              */
             const bottom = Math.floor(e.target.scrollHeight - e.target.scrollTop) === Math.floor(e.target.clientHeight);
+            const offset = Math.floor(e.target.scrollTop / 28);
+            props.setOffset(offset);
             if (bottom) {
                 if (props.hasMoreItems && props.setPage) {
                     props.setPage(prev => prev + 1);

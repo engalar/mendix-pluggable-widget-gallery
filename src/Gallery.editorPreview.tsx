@@ -13,8 +13,8 @@ export function preview(props: GalleryPreviewProps): ReactElement {
                 ? "Place filter/sort widgets here"
                 : "Place filter widgets here"
             : props.sortList.length > 0
-            ? "Place sort widgets here"
-            : "Place widgets here";
+                ? "Place sort widgets here"
+                : "Place widgets here";
     const isSortableFilterable = props.filterList.length > 0 || props.sortList.length > 0;
     return (
         <GalleryComponent
@@ -48,6 +48,7 @@ export function preview(props: GalleryPreviewProps): ReactElement {
             )}
             numberOfItems={items.length}
             page={0}
+            itemHeight={props.itemHeight!}
             pageSize={props.pageSize ?? 5}
             paging={props.pagination === "buttons"}
             paginationPosition={props.pagingPosition}

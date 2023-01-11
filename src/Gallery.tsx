@@ -172,6 +172,7 @@ export function Gallery(props: GalleryContainerProps): ReactElement {
             numberOfItems={props.datasource.totalCount}
             page={currentPage}
             pageSize={props.pageSize}
+            itemHeight={props.itemHeight.toNumber()}
             paging={props.pagination === "buttons"}
             paginationPosition={props.pagingPosition}
             phoneItems={props.phoneItems}

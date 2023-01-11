@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode, useState } from "react";
 import { InfiniteBody, Pagination } from "../piw-utils-internal/components/web";
 import { ObjectItem } from "mendix";
 import classNames from "classnames";
@@ -20,6 +20,7 @@ export interface GalleryProps<T extends ObjectItem> {
     numberOfItems?: number;
     paging: boolean;
     page: number;
+    itemHeight: number;
     pageSize: number;
     paginationPosition?: "below" | "above";
     preview?: boolean;
@@ -30,6 +31,7 @@ export interface GalleryProps<T extends ObjectItem> {
 }
 
 export function Gallery<T extends ObjectItem>(props: GalleryProps<T>): ReactElement {
+    const [offset, setOffset] = useState(0);
     const pagination = props.paging ? (
         <div className="widget-gallery-pagination">
             <Pagination
@@ -64,10 +66,12 @@ export function Gallery<T extends ObjectItem>(props: GalleryProps<T>): ReactElem
                     )}
                     hasMoreItems={props.hasMoreItems}
                     setPage={props.setPage}
+                    setOffset={setOffset}
                     isInfinite={!props.paging}
                     role="list"
                 >
-                    {props.items.map(item =>
+                    <div style={{ height: offset * props.itemHeight + 'px' }}></div>
+                    {props.items.slice(offset, offset + props.pageSize).map(item =>
                         props.itemRenderer((children, className, onClick) => {
                             return (
                                 <div
@@ -79,11 +83,11 @@ export function Gallery<T extends ObjectItem>(props: GalleryProps<T>): ReactElem
                                     onKeyDown={
                                         onClick
                                             ? e => {
-                                                  if (e.key === "Enter" || e.key === " ") {
-                                                      e.preventDefault();
-                                                      onClick();
-                                                  }
-                                              }
+                                                if (e.key === "Enter" || e.key === " ") {
+                                                    e.preventDefault();
+                                                    onClick();
+                                                }
+                                            }
                                             : undefined
                                     }
                                     role={onClick ? "button" : "listitem"}
@@ -94,6 +98,7 @@ export function Gallery<T extends ObjectItem>(props: GalleryProps<T>): ReactElem
                             );
                         }, item)
                     )}
+                    <div style={{ height: (props.items.length - offset - props.pageSize) * props.itemHeight + 'px' }}></div>
                 </InfiniteBody>
             )}
             {(props.items.length === 0 || props.preview) &&

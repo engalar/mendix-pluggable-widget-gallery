@@ -42,6 +42,7 @@ export interface GalleryContainerProps {
     desktopItems: number;
     tabletItems: number;
     phoneItems: number;
+    itemHeight: Big;
     pageSize: number;
     pagination: PaginationEnum;
     pagingPosition: PagingPositionEnum;
@@ -67,6 +68,7 @@ export interface GalleryPreviewProps {
     desktopItems: number | null;
     tabletItems: number | null;
     phoneItems: number | null;
+    itemHeight: number | null;
     pageSize: number | null;
     pagination: PaginationEnum;
     pagingPosition: PagingPositionEnum;

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="mendixcn.gallery.Gallery" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web" xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
-   <name>Gallery</name>
+<widget id="mendixcn.gallery.Gallery" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Gallery</name>
     <description/>
     <studioProCategory>Data containers</studioProCategory>
     <studioCategory>Data Containers</studioCategory>
@@ -36,6 +38,10 @@
                 </property>
             </propertyGroup>
             <propertyGroup caption="Items">
+                <property key="itemHeight" type="decimal" required="true" defaultValue="28">
+                    <caption>Item Height</caption>
+                    <description></description>
+                </property>
                 <property key="pageSize" type="integer" defaultValue="20">
                     <caption>Page size</caption>
                     <description />
